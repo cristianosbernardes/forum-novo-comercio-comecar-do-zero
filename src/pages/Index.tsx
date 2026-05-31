@@ -519,6 +519,16 @@ const MultiStepForm = () => {
     if (contactErrors[field]) setContactErrors((prev) => { const n = { ...prev }; delete n[field]; return n; });
   };
 
+  // Valida o e-mail apenas quando o lead sai do campo (blur): mostra erro se vazio
+  // ou em formato inválido; limpa o erro se estiver correto.
+  const handleEmailBlur = () => {
+    const result = contactSchema.shape.email.safeParse(contact.email);
+    setContactErrors((prev) => {
+      if (!result.success) return { ...prev, email: result.error.errors[0]?.message || "Digite um e-mail válido" };
+      const n = { ...prev }; delete n.email; return n;
+    });
+  };
+
   const progressPct = step === 0 ? 0 : isQuestionStep ? Math.round((step / TOTAL_Q) * 95) : 100;
 
   if (step === TOTAL_Q + 1) {
@@ -612,9 +622,12 @@ const MultiStepForm = () => {
                   <Input
                     id="ms-email"
                     type="email"
+                    inputMode="email"
+                    autoComplete="email"
                     placeholder="seu@email.com"
                     value={contact.email}
                     onChange={(e) => handleContactChange("email", e.target.value)}
+                    onBlur={handleEmailBlur}
                     className={`h-11 bg-black/30 border-white/15 text-white placeholder:text-white/30 ${contactErrors.email ? "border-yellow-500" : ""}`}
                   />
                   {contactErrors.email && <p className="text-[11px] text-yellow-400">{contactErrors.email}</p>}
