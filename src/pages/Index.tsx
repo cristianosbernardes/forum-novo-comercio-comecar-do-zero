@@ -757,7 +757,7 @@ const Index = () => {
 
           {/* ══ HERO — A nova era dos negócios digitais ══ */}
           <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 sm:pt-[72px]">
-            <img src={carlosHeroBg} alt="" aria-hidden="true" fetchPriority="high" decoding="sync" className="absolute inset-0 w-full h-full object-cover object-center" />
+            <img src={carlosHeroBg} alt="" aria-hidden="true" {...{ fetchpriority: "high" }} decoding="sync" className="absolute inset-0 w-full h-full object-cover object-center" />
             <div className="absolute inset-0 bg-background/60" />
             <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
