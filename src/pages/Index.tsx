@@ -791,17 +791,17 @@ const Index = () => {
                 </motion.div>
 
                 <motion.h1 variants={fadeUp} className="font-display text-[clamp(1.75rem,5.5vw,2.5rem)] mt-8 leading-[1.3] uppercase">
-                  A nova era dos negócios digitais{" "}
-                  <span className="text-primary">começou.</span>
+                  Enquanto você enrola, seu concorrente{" "}
+                  <span className="text-primary">está vendendo.</span>
                 </motion.h1>
 
                 <motion.p variants={fadeUp} className="mt-6 text-white/60 font-body font-medium text-base sm:text-xl max-w-2xl leading-[1.4]">
-                  Existe um <span className="text-white font-semibold">mercado invisível que movimenta bilhões todos os dias</span> — e a maioria das pessoas ainda não entendeu como funciona. Descubra como entrar nesse fluxo.
+                  Cada dia fora dos marketplaces é <span className="text-white font-semibold">dinheiro saindo do seu bolso</span> — e indo direto pro dele.
                 </motion.p>
 
                 <motion.div variants={fadeUp} className="mt-8">
                   <CtaButton onClick={scrollToForm} className="px-10 sm:px-14 py-5 text-base glow-green-strong">
-                    Quero Entrar Nesse Mercado
+                    Quero Ganhar Mais Online
                   </CtaButton>
                 </motion.div>
 
