@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { CheckCircle2, Calendar, ArrowRight } from "lucide-react";
 
 const Obrigado = () => {
@@ -16,25 +16,25 @@ const Obrigado = () => {
   }, []);
 
   return (
-  <motion.div
+  <m.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     className="min-h-screen bg-background flex items-center justify-center px-4 py-16"
   >
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 0.85, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="text-center max-w-lg"
     >
-      <motion.div
+      <m.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.2, type: "spring" }}
         className="w-24 h-24 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center mx-auto mb-8"
       >
         <CheckCircle2 className="w-12 h-12 text-primary" />
-      </motion.div>
+      </m.div>
 
       <h2 className="font-display text-[1.75rem] sm:text-[2rem] text-white mb-3">
         Parabéns pela decisão!
@@ -91,8 +91,8 @@ const Obrigado = () => {
       <p className="text-white/25 font-body text-xs mt-4">
         Atendimento rápido via WhatsApp
       </p>
-    </motion.div>
-  </motion.div>
+    </m.div>
+  </m.div>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -244,7 +244,7 @@ const VideoPlayer = () => {
       {/* ── Modal with sound ── */}
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -253,7 +253,7 @@ const VideoPlayer = () => {
             onClick={handleClose}
           >
             <div className="absolute inset-0 bg-black/92 backdrop-blur-md" />
-            <motion.div
+            <m.div
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
@@ -283,8 +283,8 @@ const VideoPlayer = () => {
                   <source src="/evento-video-720.mp4" type="video/mp4" />
                 </video>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>
@@ -319,7 +319,7 @@ const CtaButton = ({ children, onClick, className = "" }: { children: React.Reac
 );
 
 const SpeakerCard = ({ speaker: s }: { speaker: typeof speakers[0] }) => (
-  <motion.div variants={scaleIn} className="group relative rounded-3xl overflow-hidden bg-[#111] border border-white/8 hover:border-primary/25 transition-all duration-500">
+  <m.div variants={scaleIn} className="group relative rounded-3xl overflow-hidden bg-[#111] border border-white/8 hover:border-primary/25 transition-all duration-500">
     <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent z-20" />
     <div className="flex flex-col md:flex-row">
       <div className="relative md:w-[340px] md:flex-shrink-0 h-80 md:h-auto overflow-hidden">
@@ -376,7 +376,7 @@ const SpeakerCard = ({ speaker: s }: { speaker: typeof speakers[0] }) => (
         </a>
       </div>
     </div>
-  </motion.div>
+  </m.div>
 );
 
 const MarqueeBand = ({ reverse = false }: { reverse?: boolean }) => (
@@ -398,7 +398,7 @@ const MarqueeBand = ({ reverse = false }: { reverse?: boolean }) => (
 );
 
 const FaqItem = ({ item, isOpen, toggle }: { item: typeof faqs[0]; isOpen: boolean; toggle: () => void }) => (
-  <motion.div variants={fadeUp} className={`border rounded-lg transition-all duration-300 ${isOpen ? "border-primary/40 bg-white/[0.03]" : "border-white/10 hover:border-white/20"}`}>
+  <m.div variants={fadeUp} className={`border rounded-lg transition-all duration-300 ${isOpen ? "border-primary/40 bg-white/[0.03]" : "border-white/10 hover:border-white/20"}`}>
     <button onClick={toggle} className="w-full flex items-center justify-between p-5 text-left gap-4">
       <span className={`font-body font-semibold text-[15px] transition-colors ${isOpen ? "text-primary" : "text-white"}`}>{item.q}</span>
       <span className={`flex-shrink-0 w-7 h-7 rounded flex items-center justify-center transition-all ${isOpen ? "bg-primary text-black" : "bg-white/10 text-white/50"}`}>
@@ -407,12 +407,12 @@ const FaqItem = ({ item, isOpen, toggle }: { item: typeof faqs[0]; isOpen: boole
     </button>
     <AnimatePresence>
       {isOpen && (
-        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
+        <m.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
           <p className="px-5 pb-5 text-sm text-white/50 font-body leading-relaxed">{item.a}</p>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
-  </motion.div>
+  </m.div>
 );
 
 /* ═══════════════════════════════════════════
@@ -569,7 +569,7 @@ const MultiStepForm = () => {
           <span className="text-[11px] text-primary font-body font-bold">{progressPct}%</span>
         </div>
         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-          <motion.div
+          <m.div
             className="h-full bg-primary rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progressPct}%` }}
@@ -590,7 +590,7 @@ const MultiStepForm = () => {
 
       <AnimatePresence mode="wait">
         {step === 0 ? (
-          <motion.div
+          <m.div
             key="contact"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -659,9 +659,9 @@ const MultiStepForm = () => {
                 </span>
               </div>
             </form>
-          </motion.div>
+          </m.div>
         ) : (
-          <motion.div
+          <m.div
             key={`q-${step}`}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -692,7 +692,7 @@ const MultiStepForm = () => {
                 <Loader2 className="w-4 h-4 animate-spin" /> Enviando...
               </div>
             )}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
@@ -724,7 +724,7 @@ const Index = () => {
         <div className="absolute" style={{ top: "45%", right: "10%", width: 60, height: "50vh", background: "linear-gradient(to bottom, rgba(212,175,55,0.07) 0%, transparent 100%)", transform: "rotate(-18deg)", transformOrigin: "top center", filter: "blur(20px)" }} />
       </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen text-white overflow-x-hidden">
+      <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen text-white overflow-x-hidden">
 
           {/* ══ NAV ══ */}
           <nav className="fixed top-0 left-0 right-0 z-[5000] bg-[rgba(3,12,24,0.92)] backdrop-blur-[12px]">
@@ -782,35 +782,35 @@ const Index = () => {
             </div>
 
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center">
-              <motion.div initial="hidden" animate="visible" variants={stagger} className="flex flex-col items-center">
-                <motion.div variants={fadeUp}>
+              <m.div initial="hidden" animate="visible" variants={stagger} className="flex flex-col items-center">
+                <m.div variants={fadeUp}>
                   <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-[13px] font-body text-white/70">
                     <Zap className="w-4 h-4 text-primary" />
                     24 de Julho · São Paulo · <span className="text-primary font-bold">Vagas Limitadas</span>
                   </span>
-                </motion.div>
+                </m.div>
 
-                <motion.h1 variants={fadeUp} className="font-display text-[clamp(1.75rem,5.5vw,2.5rem)] mt-8 leading-[1.3] uppercase">
+                <m.h1 variants={fadeUp} className="font-display text-[clamp(1.75rem,5.5vw,2.5rem)] mt-8 leading-[1.3] uppercase">
                   Enquanto você enrola, seu concorrente{" "}
                   <span className="text-primary">está vendendo.</span>
-                </motion.h1>
+                </m.h1>
 
-                <motion.p variants={fadeUp} className="mt-6 text-white/60 font-body font-medium text-base sm:text-xl max-w-2xl leading-[1.4]">
+                <m.p variants={fadeUp} className="mt-6 text-white/60 font-body font-medium text-base sm:text-xl max-w-2xl leading-[1.4]">
                   Cada dia fora dos marketplaces é <span className="text-white font-semibold">dinheiro saindo do seu bolso</span> — e indo direto pro dele.
-                </motion.p>
+                </m.p>
 
-                <motion.div variants={fadeUp} className="mt-8">
+                <m.div variants={fadeUp} className="mt-8">
                   <CtaButton onClick={scrollToForm} className="px-10 sm:px-14 py-5 text-base glow-green-strong">
                     Quero Ganhar Mais Online
                   </CtaButton>
-                </motion.div>
+                </m.div>
 
-                <motion.p variants={fadeUp} className="mt-6 font-body font-medium text-white/60 text-base flex items-center gap-3">
+                <m.p variants={fadeUp} className="mt-6 font-body font-medium text-white/60 text-base flex items-center gap-3">
                   <Calendar className="w-4 h-4 text-primary" /> 24 de Julho
                   <span className="text-white/20">|</span>
                   <MapPin className="w-4 h-4 text-primary" /> São Paulo, SP
-                </motion.p>
-              </motion.div>
+                </m.p>
+              </m.div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
@@ -829,8 +829,8 @@ const Index = () => {
           {/* ══ FORM (segundo fold) ══ */}
           <section id="formulario" className="py-14 sm:py-20 relative section-elevated">
             <div className="max-w-xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-8">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-8">
                   <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary font-body font-bold text-[11px] uppercase tracking-wider mb-4">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                     Garanta sua vaga · Vagas limitadas
@@ -839,24 +839,24 @@ const Index = () => {
                     Garanta sua vaga <span className="text-primary">em 2 minutos</span>
                   </SectionHeading>
                   <p className="font-body font-medium text-white/60 text-base mt-3 max-w-md mx-auto">Preencha seus dados e responda 7 perguntas rápidas. Sem compromisso.</p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="relative">
+                <m.div variants={fadeUp} className="relative">
                   <div className="absolute -inset-6 sm:-inset-8 bg-primary/20 blur-3xl rounded-[2.5rem] pointer-events-none" aria-hidden="true" />
                   <div className="absolute -inset-2 bg-gradient-to-br from-primary/40 via-[#f4df8e]/20 to-primary/40 blur-xl rounded-3xl pointer-events-none animate-pulse" aria-hidden="true" />
                   <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-primary via-[#f4df8e] to-primary/40 shadow-2xl shadow-primary/30">
                     <MultiStepForm />
                   </div>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ O COMPORTAMENTO DO CONSUMIDOR MUDOU ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-4xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="O jogo mudou" />
                   <SectionHeading>
                     O COMPORTAMENTO DO CONSUMIDOR{" "}
@@ -866,9 +866,9 @@ const Index = () => {
                     As pessoas não procuram mais lojas.{" "}
                     <span className="text-white font-semibold">Elas procuram marketplaces.</span>
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="grid sm:grid-cols-2 gap-5">
+                <m.div variants={fadeUp} className="grid sm:grid-cols-2 gap-5">
                   <div className="rounded-2xl bg-[#1A1A1A] border border-white/5 p-6 relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-red-500/80 rounded-b" />
                     <p className="font-body font-bold text-red-400/80 text-xs uppercase tracking-wider mt-2 mb-4">Enquanto a maioria:</p>
@@ -907,27 +907,27 @@ const Index = () => {
                       ))}
                     </ul>
                   </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-6">
+                <m.div variants={fadeUp} className="text-center mt-6">
                   <p className="font-body text-white/60 text-base">
                     O dinheiro já está circulando.{" "}
                     <span className="text-primary font-bold">Você só precisa aprender como entrar nesse fluxo.</span>
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-8">
+                <m.div variants={fadeUp} className="text-center mt-8">
                   <CtaButton onClick={scrollToForm}>Quero Entrar no Fluxo</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ DADOS DE MERCADO COM FONTES ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-5xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
-                <motion.div variants={fadeUp}>
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
+                <m.div variants={fadeUp}>
                   <SectionLabel text="Os números do mercado" />
                   <SectionHeading>
                     O MERCADO QUE MOVIMENTA{" "}
@@ -937,12 +937,12 @@ const Index = () => {
                     Não é hype. São dados públicos do comportamento de compra do{" "}
                     <span className="text-white font-semibold">consumidor brasileiro.</span>
                   </p>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {marketStats.map((s, i) => (
-                  <motion.div key={i} variants={scaleIn} className="relative rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 sm:p-6 text-center overflow-hidden group hover:border-primary/20 transition-colors">
+                  <m.div key={i} variants={scaleIn} className="relative rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 sm:p-6 text-center overflow-hidden group hover:border-primary/20 transition-colors">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-primary rounded-b" />
                     <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mt-2">
                       <s.icon className="w-5 h-5 text-primary" />
@@ -950,12 +950,12 @@ const Index = () => {
                     <p className="font-display text-2xl sm:text-3xl text-primary mt-4">{s.value}</p>
                     <p className="font-display text-xs sm:text-sm text-white mt-1">{s.label}</p>
                     <p className="font-body text-[11px] sm:text-xs text-white/40 mt-2 leading-snug">{s.desc}</p>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
 
               {/* Fontes */}
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mt-8 rounded-2xl bg-white/[0.02] border border-white/5 p-5 sm:p-6">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mt-8 rounded-2xl bg-white/[0.02] border border-white/5 p-5 sm:p-6">
                 <p className="font-body font-bold text-white/70 text-[11px] uppercase tracking-wider mb-3 flex items-center gap-2">
                   <Shield className="w-3.5 h-3.5 text-primary" /> Fontes e dados utilizados
                 </p>
@@ -967,19 +967,19 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-10">
                 <CtaButton onClick={scrollToForm}>Quero Aproveitar Esse Mercado</CtaButton>
-              </motion.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ VOCÊ NÃO PRECISA — quebra de objeção ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-4xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="O mercado oculto" />
                   <SectionHeading>
                     VOCÊ <span className="text-primary">NÃO PRECISA</span> SER UM EXPERT EM MARKETING
@@ -987,9 +987,9 @@ const Index = () => {
                   <p className="font-body font-medium text-white/50 text-base mt-3 max-w-xl mx-auto">
                     A maioria acredita que para ganhar dinheiro online precisa de tudo isso. Os maiores operadores fazem o contrário.
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-red-500/15 p-6 sm:p-8 relative overflow-hidden">
+                <m.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-red-500/15 p-6 sm:p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[3px] bg-red-500/60 rounded-b" />
                   <p className="font-body font-bold text-red-400/80 text-xs uppercase tracking-wider mt-2 mb-5 text-center">Você NÃO precisa:</p>
                   <ul className="grid sm:grid-cols-2 gap-4">
@@ -1008,20 +1008,20 @@ const Index = () => {
                       <span className="text-primary font-semibold">sem expor a própria imagem.</span>
                     </p>
                   </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-8">
+                <m.div variants={fadeUp} className="text-center mt-8">
                   <CtaButton onClick={scrollToForm}>Quero Operar Sem Aparecer</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ TRÁFEGO PRONTO — mecanismo único ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-4xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="O mecanismo" />
                   <SectionHeading>
                     O MARKETPLACE JÁ TEM O QUE TODO NEGÓCIO SONHA:{" "}
@@ -1031,9 +1031,9 @@ const Index = () => {
                     Todos os dias, milhões de pessoas entram no Mercado Livre, Shopee, Amazon e Magalu com intenção de compra.{" "}
                     <span className="text-white font-semibold">O cliente já está lá.</span>
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-primary/10 p-6 sm:p-8 relative overflow-hidden">
+                <m.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-primary/10 p-6 sm:p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[3px] bg-primary rounded-b" />
                   <p className="font-body font-bold text-primary text-xs uppercase tracking-wider mt-2 mb-5 text-center">Você não precisa de anos de marketing. O foco é:</p>
                   <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -1046,20 +1046,20 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-8">
+                <m.div variants={fadeUp} className="text-center mt-8">
                   <CtaButton onClick={scrollToForm}>Quero Vender Onde o Cliente Já Está</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ STATS DO EVENTO ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-5xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
-                <motion.div variants={fadeUp}>
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
+                <m.div variants={fadeUp}>
                   <SectionLabel text="O evento" />
                   <SectionHeading>
                     O EVENTO QUE VAI REUNIR OS MAIORES NOMES DO{" "}
@@ -1068,12 +1068,12 @@ const Index = () => {
                   <p className="font-body font-medium text-white/50 text-lg mt-4 max-w-xl mx-auto">
                     Aprenda diretamente com quem <span className="text-white font-semibold">vive a operação dos maiores marketplaces do Brasil.</span>
                   </p>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {eventStats.map((s, i) => (
-                  <motion.div key={i} variants={scaleIn} className="relative rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 sm:p-6 text-center overflow-hidden group hover:border-primary/20 transition-colors">
+                  <m.div key={i} variants={scaleIn} className="relative rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 sm:p-6 text-center overflow-hidden group hover:border-primary/20 transition-colors">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-primary rounded-b" />
                     <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mt-2">
                       <s.icon className="w-5 h-5 text-primary" />
@@ -1081,17 +1081,17 @@ const Index = () => {
                     <p className="font-display text-2xl sm:text-3xl text-primary mt-4">{s.value}</p>
                     <p className="font-display text-xs sm:text-sm text-white mt-1">{s.label}</p>
                     <p className="font-body text-[11px] sm:text-xs text-white/40 mt-2 leading-snug">{s.desc}</p>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ VÍDEO — ÚLTIMA EDIÇÃO ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-5xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="Última edição" />
                   <SectionHeading>
                     VEJA COMO FOI A <span className="text-primary">ÚLTIMA EDIÇÃO</span>
@@ -1100,24 +1100,24 @@ const Index = () => {
                     Pessoas reunidas para{" "}
                     <span className="text-white font-semibold">dar o primeiro passo no novo comércio digital.</span>
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={scaleIn} className="flex justify-center">
+                <m.div variants={scaleIn} className="flex justify-center">
                   <VideoPlayer />
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-10">
+                <m.div variants={fadeUp} className="text-center mt-10">
                   <CtaButton onClick={scrollToForm}>Quero Estar na Próxima Edição</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ SPEAKER — CARLOS (autoridade) ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-6xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
-                <motion.div variants={fadeUp}>
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
+                <m.div variants={fadeUp}>
                   <SectionLabel text="Aprenda com quem opera" />
                   <SectionHeading>
                     QUEM ESTÁ NO PALCO DO <span className="text-primary">FÓRUM NOVO COMÉRCIO?</span>
@@ -1125,31 +1125,31 @@ const Index = () => {
                   <p className="font-body font-medium text-white/50 text-lg mt-4 max-w-lg mx-auto">
                     Aprenda diretamente com quem <span className="text-white font-semibold">vive o que ensina — todos os dias.</span>
                   </p>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }} variants={stagger}>
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }} variants={stagger}>
                 <SpeakerCard speaker={speakers[0]} />
-              </motion.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-12">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-12">
                 <CtaButton onClick={scrollToForm}>Quero Aprender com Ele</CtaButton>
-              </motion.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ CASE STUDY — FELIZZO (prova: do zero ao 1º milhão) ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-4xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="Caso real" />
                   <SectionHeading>
                     COMEÇOU DO ZERO. VOCÊ PODE SER O <span className="text-primary">PRÓXIMO.</span>
                   </SectionHeading>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={scaleIn} className="rounded-2xl bg-[#1A1A1A] border border-primary/15 p-6 sm:p-8 relative overflow-hidden">
+                <m.div variants={scaleIn} className="rounded-2xl bg-[#1A1A1A] border border-primary/15 p-6 sm:p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[3px] bg-primary rounded-b" />
                   <div className="flex flex-col gap-6 mt-4">
                     <div className="flex items-center gap-3">
@@ -1184,20 +1184,20 @@ const Index = () => {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-8">
+                <m.div variants={fadeUp} className="text-center mt-8">
                   <CtaButton onClick={scrollToForm}>Quero Resultados Como Esses</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ O QUE VOCÊ VAI DESCOBRIR — learnings ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-5xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
-                <motion.div variants={fadeUp}>
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center mb-12">
+                <m.div variants={fadeUp}>
                   <SectionLabel text="Conteúdo do evento" />
                   <SectionHeading>
                     O QUE VOCÊ VAI DESCOBRIR
@@ -1205,12 +1205,12 @@ const Index = () => {
                   <p className="font-body font-medium text-white/50 text-lg mt-4 max-w-lg mx-auto">
                     Como funciona o ecossistema dos marketplaces — <span className="text-white font-semibold">do primeiro passo à operação em escala.</span>
                   </p>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }} variants={stagger} className="space-y-4">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }} variants={stagger} className="space-y-4">
                 {learnings.map((item, i) => (
-                  <motion.div key={i} variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-white/5 overflow-hidden hover:border-primary/20 transition-colors">
+                  <m.div key={i} variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-white/5 overflow-hidden hover:border-primary/20 transition-colors">
                     <div className="h-[3px] bg-gradient-to-r from-primary via-primary/50 to-transparent" />
                     <div className="flex flex-col sm:flex-row gap-5 p-5 sm:p-6">
                       <div className="flex sm:flex-col items-center sm:items-start gap-3 flex-shrink-0">
@@ -1232,21 +1232,21 @@ const Index = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-12">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-12">
                 <CtaButton onClick={scrollToForm}>Quero Descobrir Tudo Isso</CtaButton>
-              </motion.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ VOCÊ VAI SAIR COM — outcomes ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-5xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-12">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-12">
                   <SectionLabel text="A transformação" />
                   <SectionHeading>
                     VOCÊ VAI SAIR DO EVENTO{" "}
@@ -1256,11 +1256,11 @@ const Index = () => {
                     Não é teoria. É{" "}
                     <span className="text-white font-semibold">um caminho real para começar no novo comércio.</span>
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={stagger} className="grid sm:grid-cols-2 gap-4">
+                <m.div variants={stagger} className="grid sm:grid-cols-2 gap-4">
                   {outcomes.map((item, i) => (
-                    <motion.div key={i} variants={scaleIn} className="rounded-2xl bg-[#1A1A1A] border border-white/5 p-6 relative overflow-hidden hover:border-primary/20 transition-colors">
+                    <m.div key={i} variants={scaleIn} className="rounded-2xl bg-[#1A1A1A] border border-white/5 p-6 relative overflow-hidden hover:border-primary/20 transition-colors">
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-primary rounded-b" />
                       <div className="flex items-start gap-4 mt-2">
                         <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
@@ -1271,30 +1271,30 @@ const Index = () => {
                           <p className="text-white/40 font-body text-xs mt-2 leading-relaxed">{item.desc}</p>
                         </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   ))}
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-10">
+                <m.div variants={fadeUp} className="text-center mt-10">
                   <CtaButton onClick={scrollToForm}>Quero Essa Transformação</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ PARA QUEM É ESSE EVENTO ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-3xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="Para quem é" />
                   <SectionHeading>
                     ESSE EVENTO É PARA{" "}
                     <span className="text-primary">VOCÊ QUE:</span>
                   </SectionHeading>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-primary/10 p-6 sm:p-8 relative overflow-hidden">
+                <m.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-primary/10 p-6 sm:p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[3px] bg-primary rounded-b" />
                   <ul className="space-y-4 mt-2">
                     {[
@@ -1313,20 +1313,20 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-8">
+                <m.div variants={fadeUp} className="text-center mt-8">
                   <CtaButton onClick={scrollToForm}>Esse Sou Eu — Quero Participar</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ NÃO É PARA VOCÊ SE ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-3xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="Seja honesto consigo" />
                   <SectionHeading>
                     MAS SE VOCÊ É ASSIM,{" "}
@@ -1335,9 +1335,9 @@ const Index = () => {
                   <p className="font-body font-medium text-white/50 text-base mt-3 max-w-lg mx-auto">
                     Vagas são limitadas. Não queremos desperdiçar a sua — nem a nossa.
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-red-500/15 p-6 sm:p-8 relative overflow-hidden">
+                <m.div variants={fadeUp} className="rounded-2xl bg-[#1A1A1A] border border-red-500/15 p-6 sm:p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[3px] bg-red-500/60 rounded-b" />
                   <ul className="space-y-4 mt-2">
                     {[
@@ -1361,20 +1361,20 @@ const Index = () => {
                       <span className="text-white/60 font-semibold">Se não se identificou, seu lugar está aqui.</span>
                     </p>
                   </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="text-center mt-8">
+                <m.div variants={fadeUp} className="text-center mt-8">
                   <CtaButton onClick={scrollToForm}>Meu Lugar É Aqui — Quero Me Inscrever</CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ O MOMENTO É AGORA — urgência ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-3xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center">
-                <motion.div variants={fadeUp}>
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger} className="text-center">
+                <m.div variants={fadeUp}>
                   <SectionLabel text="Urgência" />
                   <SectionHeading>
                     O MOMENTO É <span className="text-primary">AGORA.</span>
@@ -1383,9 +1383,9 @@ const Index = () => {
                     O mercado está se expandindo. As vendas online aumentam ano após ano.{" "}
                     <span className="text-white font-semibold">E quem entra cedo constrói vantagem.</span>
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="grid sm:grid-cols-3 gap-4 mt-10 text-left">
+                <m.div variants={fadeUp} className="grid sm:grid-cols-3 gap-4 mt-10 text-left">
                   {[
                     "Aprenda com quem realmente performa",
                     "Conheça o mercado que movimenta bilhões",
@@ -1397,33 +1397,33 @@ const Index = () => {
                       <p className="font-body text-white/70 text-sm mt-3 leading-snug">{item}</p>
                     </div>
                   ))}
-                </motion.div>
+                </m.div>
 
-                <motion.p variants={fadeUp} className="font-display text-primary text-base uppercase tracking-wider mt-10">
+                <m.p variants={fadeUp} className="font-display text-primary text-base uppercase tracking-wider mt-10">
                   As vagas são limitadas.
-                </motion.p>
+                </m.p>
 
-                <motion.div variants={fadeUp} className="mt-6">
+                <m.div variants={fadeUp} className="mt-6">
                   <CtaButton onClick={scrollToForm} className="px-10 sm:px-14 py-5 text-base glow-green-strong">
                     Quero Participar do Evento
                   </CtaButton>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ LOCAL DO EVENTO ══ */}
           <section className="py-16 sm:py-20 relative bg-grid-fade">
             <div className="max-w-5xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="Onde irá acontecer" />
                   <SectionHeading>
                     COMO CHEGAR NO NOSSO <span className="text-primary">PONTO DE ENCONTRO</span>
                   </SectionHeading>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <m.div variants={fadeUp} className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                   <div className="rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 flex flex-col">
                     <p className="font-display text-sm text-primary">ENDEREÇO</p>
                     <p className="font-body text-white/70 text-xs mt-2 leading-relaxed">Sede da Associação Comercial de São Paulo</p>
@@ -1449,9 +1449,9 @@ const Index = () => {
                       • Centro Histórico de SP
                     </p>
                   </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div variants={fadeUp} className="rounded-2xl overflow-hidden border border-white/5">
+                <m.div variants={fadeUp} className="rounded-2xl overflow-hidden border border-white/5">
                   <iframe
                     src="https://maps.google.com/maps?q=Associa%C3%A7%C3%A3o+Comercial+de+S%C3%A3o+Paulo,+Rua+Boa+Vista+51,+Centro,+S%C3%A3o+Paulo,+SP&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     width="100%"
@@ -1462,25 +1462,25 @@ const Index = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Local do evento"
                   />
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
           {/* ══ FAQ ══ */}
           <section className="py-16 sm:py-20 section-elevated">
             <div className="max-w-2xl mx-auto px-6">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
-                <motion.div variants={fadeUp} className="text-center mb-10">
+              <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={stagger}>
+                <m.div variants={fadeUp} className="text-center mb-10">
                   <SectionLabel text="FAQ" />
                   <SectionHeading>PERGUNTAS FREQUENTES</SectionHeading>
-                </motion.div>
-                <motion.div variants={stagger} className="space-y-3">
+                </m.div>
+                <m.div variants={stagger} className="space-y-3">
                   {faqs.map((faq, i) => (
                     <FaqItem key={i} item={faq} isOpen={openFaq === i} toggle={() => setOpenFaq(openFaq === i ? null : i)} />
                   ))}
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
           </section>
 
@@ -1490,7 +1490,7 @@ const Index = () => {
               <p className="text-xs text-white/20 font-body">© 2026 Fórum Novo Comércio. Todos os direitos reservados.</p>
             </div>
           </footer>
-        </motion.div>
+        </m.div>
     </>
   );
 };
