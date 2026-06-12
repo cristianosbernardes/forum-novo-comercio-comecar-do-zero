@@ -6,12 +6,18 @@ const Obrigado = () => {
   useEffect(() => {
     if (typeof window.fbq === "function") {
       window.fbq("track", "PageView");
-      window.fbq("track", "Lead", {
+      // Lead qualificado: só dispara aqui (a /obrigado só é alcançada por quem passa
+      // na lógica condicional do formulário). Mantemos "Lead" por continuidade e
+      // disparamos "CompleteRegistration" como o evento limpo e dedicado para otimizar
+      // os anúncios novos — sem o histórico contaminado do "Lead" antigo.
+      const params = {
         content_name: "Fórum Novo Comércio 2026",
         content_category: "Evento",
         value: 0,
         currency: "BRL",
-      });
+      };
+      window.fbq("track", "Lead", params);
+      window.fbq("track", "CompleteRegistration", params);
     }
   }, []);
 

@@ -464,12 +464,6 @@ const MultiStepForm = () => {
     });
   };
 
-  const trackLead = () => {
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "Lead", { content_name: "Fórum Novo Comércio 2026 — Começar do Zero", content_category: "Evento", value: 0, currency: "BRL" });
-    }
-  };
-
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError("");
@@ -491,7 +485,7 @@ const MultiStepForm = () => {
 
     if (q.disqualify.includes(option)) {
       setIsSubmitting(true);
-      try { await sendToSheets(nextAnswers, false); trackLead(); } catch { /* segue mesmo se der erro */ }
+      try { await sendToSheets(nextAnswers, false); } catch { /* segue mesmo se der erro */ }
       setIsSubmitting(false);
       setStep(TOTAL_Q + 1);
       return;
@@ -501,7 +495,6 @@ const MultiStepForm = () => {
       setIsSubmitting(true);
       try {
         await sendToSheets(nextAnswers, true);
-        trackLead();
         navigate("/obrigado");
       } catch {
         setSubmitError("Erro ao enviar. Tente novamente.");
