@@ -495,6 +495,9 @@ const MultiStepForm = () => {
       setIsSubmitting(true);
       try {
         await sendToSheets(nextAnswers, true);
+        // Dados do lead para a CAPI (e-mail/telefone/nome) → melhor Event Match Quality.
+        sessionStorage.setItem("fnc_lead", JSON.stringify(contact));
+        sessionStorage.removeItem("fnc_conv_done");
         navigate("/obrigado");
       } catch {
         setSubmitError("Erro ao enviar. Tente novamente.");

@@ -1,24 +1,53 @@
 import { useEffect } from "react";
 import { m } from "framer-motion";
 import { CheckCircle2, Calendar, ArrowRight } from "lucide-react";
+import { genEventId, getFbp, getFbc, sendCapi } from "@/lib/capi";
 
 const Obrigado = () => {
   useEffect(() => {
+    // Guard: evita disparo duplicado se o usuário recarregar a /obrigado.
+    if (sessionStorage.getItem("fnc_conv_done")) return;
+
+    // O MESMO eventId vai para o Pixel (navegador) e para a CAPI (servidor).
+    // A Meta deduplica por (evento + eventId) → conta 1 vez, com EMQ melhor.
+    const eventId = genEventId();
+
+    let lead: { nome?: string; email?: string; telefone?: string } = {};
+    try {
+      lead = JSON.parse(sessionStorage.getItem("fnc_lead") || "{}");
+    } catch {
+      /* sem dados do lead (ex.: acesso direto à /obrigado) — segue só com fbp/fbc/IP */
+    }
+
+    // Lead qualificado: só dispara aqui (a /obrigado só é alcançada por quem passa
+    // na lógica condicional do formulário). Mantemos "Lead" por continuidade e
+    // "CompleteRegistration" como o evento limpo e dedicado para otimizar anúncios novos.
+    const params = {
+      content_name: "Fórum Novo Comércio 2026",
+      content_category: "Evento",
+      value: 0,
+      currency: "BRL",
+    };
+
     if (typeof window.fbq === "function") {
       window.fbq("track", "PageView");
-      // Lead qualificado: só dispara aqui (a /obrigado só é alcançada por quem passa
-      // na lógica condicional do formulário). Mantemos "Lead" por continuidade e
-      // disparamos "CompleteRegistration" como o evento limpo e dedicado para otimizar
-      // os anúncios novos — sem o histórico contaminado do "Lead" antigo.
-      const params = {
-        content_name: "Fórum Novo Comércio 2026",
-        content_category: "Evento",
-        value: 0,
-        currency: "BRL",
-      };
-      window.fbq("track", "Lead", params);
-      window.fbq("track", "CompleteRegistration", params);
+      window.fbq("track", "Lead", params, { eventID: eventId });
+      window.fbq("track", "CompleteRegistration", params, { eventID: eventId });
     }
+
+    sendCapi({
+      eventId,
+      email: lead.email,
+      phone: lead.telefone,
+      name: lead.nome,
+      fbp: getFbp(),
+      fbc: getFbc(),
+      eventSourceUrl: window.location.href,
+      eventNames: ["Lead", "CompleteRegistration"],
+    });
+
+    sessionStorage.setItem("fnc_conv_done", "1");
+    sessionStorage.removeItem("fnc_lead");
   }, []);
 
   return (
