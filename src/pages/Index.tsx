@@ -140,10 +140,10 @@ const eventStats = [
   { icon: Users, value: "DO ZERO", label: "AO 1º MILHÃO", desc: "O caminho que já levou alunos do absoluto zero ao primeiro milhão" },
   { icon: TrendingUp, value: "OPERADORES", label: "REAIS NO PALCO", desc: "Aprenda com quem vive a operação dos maiores marketplaces" },
   { icon: MapPin, value: "SÃO PAULO", label: "PRESENCIAL", desc: "1 dia de imersão total no novo comércio digital" },
-  { icon: Calendar, value: "24.07", label: "1 DIA INTENSIVO", desc: "8 horas para entrar no mercado que mais cresce no Brasil" },
+  { icon: Calendar, value: "21.08", label: "1 DIA INTENSIVO", desc: "8 horas para entrar no mercado que mais cresce no Brasil" },
 ];
 
-const EVENT_DATE = new Date("2026-07-24T10:00:00");
+const EVENT_DATE = new Date("2026-08-21T10:00:00");
 
 /* ═══════════════════════════════════════════
    HOOKS & ANIMATIONS
@@ -782,7 +782,7 @@ const Index = () => {
                 <m.div variants={fadeUp}>
                   <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-[13px] font-body text-white/70">
                     <Zap className="w-4 h-4 text-primary" />
-                    24 de Julho · São Paulo · <span className="text-primary font-bold">Vagas Limitadas</span>
+                    21 de Agosto · São Paulo · <span className="text-primary font-bold">Vagas Limitadas</span>
                   </span>
                 </m.div>
 
@@ -802,7 +802,7 @@ const Index = () => {
                 </m.div>
 
                 <m.p variants={fadeUp} className="mt-6 font-body font-medium text-white/60 text-base flex items-center gap-3">
-                  <Calendar className="w-4 h-4 text-primary" /> 24 de Julho
+                  <Calendar className="w-4 h-4 text-primary" /> 21 de Agosto
                   <span className="text-white/20">|</span>
                   <MapPin className="w-4 h-4 text-primary" /> São Paulo, SP
                 </m.p>
@@ -1428,7 +1428,7 @@ const Index = () => {
                   </div>
                   <div className="rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 flex flex-col">
                     <p className="font-display text-sm text-primary">DATA</p>
-                    <p className="font-body text-white/70 text-xs mt-2">24 de Julho de 2026</p>
+                    <p className="font-body text-white/70 text-xs mt-2">21 de Agosto de 2026</p>
                     <p className="font-body text-white/40 text-xs mt-1">(Sexta-feira)</p>
                   </div>
                   <div className="rounded-2xl bg-[#1A1A1A] border border-white/5 p-5 flex flex-col">

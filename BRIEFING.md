@@ -18,7 +18,7 @@ Criar uma **segunda landing page** (variante) para o evento do Carlos, voltada a
 ## 📅 Dados do evento (idênticos à LP atual)
 
 - **Nome:** Fórum Novo Comércio 2026
-- **Data:** 24 de Julho de 2026 (`EVENT_DATE = new Date("2026-07-24T10:00:00")`)
+- **Data:** 21 de Agosto de 2026 (`EVENT_DATE = new Date("2026-08-21T10:00:00")`)
 - **Local:** São Paulo, SP — presencial
 - **Horário:** 10h às 18h (1 dia intensivo, ~8h de imersão)
 - **Palestrante principal:** Carlos Arantes — CEO da UseVertice e CTA Marketing. +10 anos no mercado digital; foi à China validar fornecedores; ajudou empresários do zero ao 1º milhão. (Instagram: @carlosarantesm)
@@ -139,6 +139,6 @@ A copy dela é forte em narrativa/dados, mas ignora ativos que convertem:
 
 ## 📌 Notas
 
-- Data já corrigida para **24/07/2026** na LP atual — usar a mesma aqui.
+- Data já corrigida para **21/08/2026** na LP atual — usar a mesma aqui.
 - Identidade dourada (#d4af37) já é a oficial — manter por consistência de marca.
 - Esta variante é para **testar dois públicos em paralelo** (empresário x iniciante/investidor), não substitui a LP atual.

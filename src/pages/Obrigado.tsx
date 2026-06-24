@@ -97,7 +97,7 @@ const Obrigado = () => {
 
       {/* Date badge */}
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary/5 border border-primary/20 text-primary text-sm font-body font-semibold mb-8">
-        <Calendar className="w-4 h-4" /> 24 de Julho, 2026 — São Paulo, SP
+        <Calendar className="w-4 h-4" /> 21 de Agosto, 2026 — São Paulo, SP
       </div>
 
       {/* Separator */}
