@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { m } from "framer-motion";
-import { CheckCircle2, Calendar, ArrowRight } from "lucide-react";
+import { CheckCircle2, Calendar, ArrowRight, Users, MessageCircle } from "lucide-react";
 import { genEventId, getFbp, getFbc, sendCapi } from "@/lib/capi";
 
 const Obrigado = () => {
@@ -103,29 +103,45 @@ const Obrigado = () => {
       {/* Separator */}
       <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent mx-auto mb-8" />
 
-      {/* Next step text */}
-      <p className="text-white/40 font-body text-sm mb-6">
-        Nosso time comercial entrará em contato com você em breve.
-        <br />
-        <span className="text-white/70 font-medium">
-          Mas se preferir, você já pode falar diretamente com nossa equipe agora:
-        </span>
+      {/* Próximo passo: entrar no grupo */}
+      <p className="text-white/40 font-body text-sm mb-2">
+        <span className="text-primary font-bold uppercase tracking-wider text-xs">Passo importante</span>
+      </p>
+      <p className="text-white/70 font-body text-[15px] leading-relaxed mb-6">
+        Entre agora no{" "}
+        <span className="text-white font-semibold">grupo oficial do evento no WhatsApp</span>{" "}
+        para receber todas as informações, avisos e o conteúdo exclusivo. É lá que tudo acontece.
       </p>
 
-      {/* WhatsApp CTA */}
+      {/* Grupo WhatsApp — CTA principal */}
       <a
-        href="https://wa.me/5511994087347?text=Acabei%20de%20preencher%20o%20formul%C3%A1rio%20do%20evento%2C%20quero%20mais%20informa%C3%A7%C3%B5es"
+        href="https://chat.whatsapp.com/E2hw5JndX0fK8pjtlDyiES"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-3 bg-gradient-to-r from-[#b8860b] via-[#d4af37] to-[#f4df8e] text-black font-body font-bold text-sm uppercase tracking-[0.1em] px-8 py-4 rounded hover:brightness-110 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 glow-green"
       >
-        Falar com a Equipe Agora
+        <Users className="w-5 h-5" />
+        Entrar no Grupo do Evento
         <ArrowRight className="w-5 h-5" />
       </a>
 
-      <p className="text-white/25 font-body text-xs mt-4">
-        Atendimento rápido via WhatsApp
+      <p className="text-white/25 font-body text-xs mt-4 mb-8">
+        Acesso imediato ao grupo oficial no WhatsApp
       </p>
+
+      {/* Contato direto — secundário */}
+      <p className="text-white/40 font-body text-sm mb-4">
+        Prefere falar direto com nossa equipe?
+      </p>
+      <a
+        href="https://wa.me/5511994087347?text=Acabei%20de%20preencher%20o%20formul%C3%A1rio%20do%20evento%2C%20quero%20mais%20informa%C3%A7%C3%B5es"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 border border-primary/30 text-primary font-body font-semibold text-sm px-6 py-3 rounded hover:bg-primary/5 transition-all duration-300"
+      >
+        <MessageCircle className="w-4 h-4" />
+        Falar com a Equipe
+      </a>
     </m.div>
   </m.div>
   );
