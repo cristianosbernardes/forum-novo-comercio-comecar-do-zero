@@ -12,6 +12,7 @@ import {
 import { z } from "zod";
 import carlosSpeaker from "@/assets/carlos-speaker.webp";
 import carlosHeroBg from "@/assets/carlos-hero-bg.webp";
+import felizzoChina from "@/assets/felizzo-china.webp";
 
 /* ═══════════════════════════════════════════
    DATA — Variante "Começar do Zero / Investir"
@@ -1147,7 +1148,20 @@ const Index = () => {
 
                 <m.div variants={scaleIn} className="rounded-2xl bg-[#1A1A1A] border border-primary/15 p-6 sm:p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[3px] bg-primary rounded-b" />
-                  <div className="flex flex-col gap-6 mt-4">
+                  <div className="grid md:grid-cols-[minmax(0,300px)_1fr] gap-6 sm:gap-8 items-center mt-4">
+                    <div className="relative rounded-xl overflow-hidden border border-white/10">
+                      <img
+                        src={felizzoChina}
+                        alt="Fundador da Felizzo com Carlos Arantes em visita a fornecedores na China"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover aspect-[4/5]"
+                      />
+                      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2">
+                        <p className="font-body text-[11px] text-white/80">Validando fornecedores na China com Carlos Arantes</p>
+                      </div>
+                    </div>
+                  <div className="flex flex-col gap-6">
                     <div className="flex items-center gap-3">
                       <div className="px-3 py-1.5 rounded bg-primary/10 border border-primary/20">
                         <span className="font-display text-xs text-primary tracking-wider">FELIZZO</span>
@@ -1179,6 +1193,7 @@ const Index = () => {
                         </div>
                       ))}
                     </div>
+                  </div>
                   </div>
                 </m.div>
 
